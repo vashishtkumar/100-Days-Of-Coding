@@ -1,7 +1,7 @@
 package Day3;
 
 import java.lang.classfile.components.ClassPrinter.ListNode;
-
+// tc=o(n) sc=o(1)
 public class leetCode19RemoveNthNodefromlastoflinkedlisT {
     class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
