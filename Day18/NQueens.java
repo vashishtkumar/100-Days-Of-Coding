@@ -1,14 +1,15 @@
-public class NQueens {
-    import java.util.*;
+class Solution {
 
-    // Leet code 51
-class NQueens {
+    leetcode =51 
+    public List<List<String>> solveNQueens(int n) {
+        char[][] board = new char[n][n]; // declaring a 2D array
 
-    public static List<List<String>> solveNQueens(int n) {
-        char[][] board = new char[n][n];
         for (int i = 0; i < n; i++) {
-            Arrays.fill(board[i], '.');
+            for (int j = 0; j < n; j++) {
+                board[i][j] = '.';
+            }
         }
+
         List<List<String>> res = new ArrayList<>();
         solve(0, board, res, n);
         return res;
@@ -24,31 +25,28 @@ class NQueens {
             if (isSafe(row, col, board, n)) {
                 board[row][col] = 'Q';
                 solve(col + 1, board, res, n);
-                board[row][col] = '.'; // backtrack
+                board[row][col] = '.';
             }
         }
     }
 
     static boolean isSafe(int row, int col, char[][] board, int n) {
-        // Check the left side of the current row
+        // Checking the left side
         for (int i = 0; i < col; i++) {
-            if (board[row][i] == 'Q') {
+            if (board[row][i] == 'Q')
                 return false;
-            }
         }
 
-        // Check the upper diagonal on the left side
+        // Checking the upper diagonal on the left side
         for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
-            if (board[i][j] == 'Q') {
+            if (board[i][j] == 'Q')
                 return false;
-            }
         }
 
-        // Check the lower diagonal on the left side
+        // Checking the lower diagonal on the left side
         for (int i = row, j = col; i < n && j >= 0; i++, j--) {
-            if (board[i][j] == 'Q') {
+            if (board[i][j] == 'Q')
                 return false;
-            }
         }
 
         return true;
@@ -61,20 +59,4 @@ class NQueens {
         }
         return res;
     }
-
-    public static void main(String[] args) {
-        int N = 4;
-        List<List<String>> queenArrangements = solveNQueens(N);
-        int i = 1;
-        for (List<String> arrangement : queenArrangements) {
-            System.out.println("Arrangement " + i);
-            for (String row : arrangement) {
-                System.out.println(row);
-            }
-            System.out.println();
-            i++;
-        }
-    }
-}
-
 }
